@@ -49,13 +49,15 @@ Constraints:
             {
                 count+=umap[k-arr[i]];
             }
-            if(umap.find(arr[i])!=umap.end())
+  /*          if(umap.find(arr[i])!=umap.end())
             {
                 umap[arr[i]]+=1;
             }
             else
-             umap.insert({arr[i],1});
-        }
+             umap.insert({arr[i],1});  */
+            
+            umap[arr[i]]++;  //this line of code is equivalent to the above commented out code
+        }   
         
         
         return count;
