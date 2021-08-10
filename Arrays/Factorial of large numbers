@@ -1,0 +1,81 @@
+Given an integer N, find its factorial.
+
+Example 1:
+
+Input: N = 5
+Output: 120
+Explanation : 5! = 1*2*3*4*5 = 120
+Example 2:
+
+Input: N = 10
+Output: 3628800
+Explanation :
+10! = 1*2*3*4*5*6*7*8*9*10 = 3628800
+
+Your Task:
+You don't need to read input or print anything. Complete the function factorial() that takes integer N as input parameter and returns a list of integers denoting the digits that make up the factorial of N.
+
+
+Expected Time Complexity : O(N2)
+Expected Auxilliary Space : O(1)
+
+
+Constraints:
+1 ≤ N ≤ 1000
+
+
+
+/////////////////// Code /////////////////////////////////////////
+
+vector<int> factorial(int n){
+    // code here
+    vector<int> result;
+    int carry;
+    long int val,k,dig,x,j;
+    result.push_back(1);
+    for(int i=2;i<=n;i++)
+    {
+        k = result.size()-1;
+        carry=0;
+        x=0;
+        for(j=0;j<k;j++)
+        {
+
+            val=result[j]*i+carry;
+
+            carry=0;
+            if(val<10)
+                result[j]=val;
+           
+            else{
+                result[j]=val%10;
+                carry = val/10;
+            }
+
+        }
+         val=result[j]*i+carry;
+
+            carry=0;
+            if(val<10)
+                result[j]=val;
+            else 
+            {
+                dig=val;
+                x=1;
+                while(dig>0){
+                    if(x==1)
+                    {
+                        result[j]=dig%10;
+                        x=0;
+                    }
+                    else
+                        result.push_back(dig%10);
+                    dig=dig/10;
+                }
+            }
+    }
+    reverse(result.begin(), result.end());
+
+    return result;
+
+}
