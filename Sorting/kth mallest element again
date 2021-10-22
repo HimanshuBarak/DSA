@@ -1,0 +1,130 @@
+//
+
+Input : arr[] = {{1, 4}, {6, 8}}
+        queries[] = {2, 6, 10};
+Output : 2
+         7
+        -1
+After combining the given ranges, the numbers
+become 1 2 3 4 6 7 8. As here 2nd element is 2,
+so we print 2. As 6th element is 7, so we print
+7 and as 10th element doesn't exist, so we
+print -1.
+
+Input : arr[] = {{2, 6}, {5, 7}}
+        queries[] = {5, 8};
+Output : 6
+        -1
+After combining the given ranges, the numbers 
+become 2 3 4 5 6 7. As here 5th element is 6, 
+so we print 6 and as 8th element doesn't exist, 
+so we print -1.
+// Created by himan on 10/21/2021.
+//
+
+#include<bits/stdc++.h>
+
+using namespace std;
+
+#define ll long long int
+#define f first
+#define s second
+
+bool comparePair(pair<ll,ll> i1,pair<ll,ll>  i2)
+{
+    return (i1.first < i2.first);
+}
+
+int kthSmallestNum(vector<pair<ll,ll>> merged, int k)
+{
+    int n = merged.size();
+
+    // Traverse merged[] to find
+    // Kth smallest element using Linear search.
+    //if between the intervals return the value  else return -1
+    for (int j = 0; j < n; j++)
+    {
+        if (k <= abs(merged[j].s -
+                     merged[j].f + 1))
+            return (merged[j].f + k - 1);
+
+        k = k - abs(merged[j].s -
+                    merged[j].f + 1);
+    }
+
+    if (k)
+        return -1;
+}
+
+//for merging the intervals
+void  mergeintervals(vector<pair<ll,ll>>& v,vector<pair<ll,ll>>& merged)
+{
+
+    sort(v.begin(),v.end(),comparePair);
+    merged.push_back(v[0]);
+    pair<int, char> prev;
+    for(int i =1;i<v.size();i++)
+    {
+        //if mutually exclusive add it to the stack
+       prev = merged.back();
+
+        if(prev.s<v[i].f)
+            merged.push_back(v[i]);
+        else if(v[i].s>prev.s)
+            merged.back().s = v[i].s;
+    }
+
+}
+
+int main()
+{
+     vector<pair<ll,ll>> v = {{2, 6}, {4, 7}};
+
+    int query[] = {5, 8};
+    int q = sizeof(query)/sizeof(query[0]);
+
+    // Merge all intervals into merged[]
+    vector<pair<ll,ll>>merged;
+    mergeintervals(v,merged);
+
+    // Processing all queries on merged
+    // intervals
+    for (int i = 0; i < q; i++)
+        cout << kthSmallestNum(merged, query[i])
+             << endl;
+
+    return 0;
+}
+
+/*
+
+int main(){
+
+    ll n=0,q=0,a,b,x,k;
+
+    vector<pair<ll,ll>> v;
+    vector<pair<ll,ll>> merged;
+    long int t;
+
+    while(t--)
+    {
+        cin>>n>>q;
+        for(int i=0;i<n;i++)
+        {
+            cin>>a>>b;
+            v.push_back({a,b});
+        }
+        sort(v.begin(),v.end(),comparePair);
+        mergeintervals(v, merged);
+        for(int i=0;i<q;i++)
+        {
+
+            cin>>k;
+            cout<<kthSmallestNum(merged, k)<<endl;
+        }
+    }
+
+    return 0;
+}
+
+*/
