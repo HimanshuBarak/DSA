@@ -1,0 +1,45 @@
+#define ll long long int
+class Solution {
+public:
+    int ispossible(vector<int>& a,int mid,int m)
+    {
+        ll totalcows=1,dist=a[0];
+         for(int i=1;i<a.size();i++)
+         {  
+             //check if its greater than the distance specified
+             if(a[i]-dist >=mid)
+             {
+                 //if true place a cow there
+                 totalcows++;
+                 dist=a[i]; //calculate distance from this point now
+             }
+         }
+        if(totalcows>=m)
+            return true;
+        else
+            return false;
+            
+       
+    }
+    
+    int maxDistance(vector<int>& a, int m) {
+        int res=0;
+        sort(a.begin(),a.end());
+        int low = 0, high = a[a.size()-1];
+        while(low<=high)
+        {
+            int mid= (low+high)/2;
+           
+            if(ispossible(a,mid,m))
+            {
+                res =mid;
+                
+               low=mid+1;
+            }
+            else
+                high=mid-1;
+            
+        }
+        return res;
+    }
+};
