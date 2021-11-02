@@ -1,0 +1,51 @@
+#define ll long long int
+class Solution {
+public:
+    int ispossible(vector<int>& a,ll mid,int m,int k)
+    {
+        ll f=0,t=0;
+         for(int i=0;i<a.size();i++)
+         {  
+             if(a[i]<=mid)
+                 t++;
+             else
+                 t=0;
+             if(t>=k)
+             {
+                 f++;    
+                 t=0;
+             }
+             if(f==m)
+                return true;
+            
+         }
+       
+        
+            return false;
+            
+       
+    }
+    int minDays(vector<int>& a, int m, int k) {
+        ll res=0;
+        ll flowers =k*m;
+        if(flowers>a.size())
+            return -1;
+        
+        ll low = 0, high = 1000000000;
+        while(low<=high)
+        {
+            ll mid= (low+high)/2;
+            cout<<"low "<<low<<" high "<<high<<endl;
+            if(ispossible(a,mid,m,k))
+            {
+                res =mid;
+                high=mid-1;
+               
+            }
+            else
+                low=mid+1;
+            
+        }
+        return res;
+    }
+};
