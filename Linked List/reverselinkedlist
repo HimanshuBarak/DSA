@@ -1,0 +1,85 @@
+//
+// Created by himan on 11/5/2021.
+//
+
+#include<bits\stdc++.h>
+#define ll long long int
+
+using namespace std;
+
+class Node {
+public:
+    ll data;
+    Node* next;
+    //default constructor
+    Node()
+    {
+        this->data=0;
+        this->next= NULL;
+    }
+    Node(int data)
+    {
+        this->data=data;
+        this->next =NULL;
+    }
+
+}*head=NULL;
+
+void display(){
+    Node* temp = new Node();
+    if(!head)
+        cout<<"Linked List is empty";
+    else
+    {
+        temp=head;
+        while(temp){
+            cout<<temp->data<<" ";
+            temp = temp->next;  //incrementing the pointer
+        }
+    }
+}
+//insert at head
+void insert_head(int val){
+    Node* temp = new Node(val);  // to allocate memory at run time
+
+    if(!head)
+    {
+        head=temp;
+
+        return;
+    }
+    temp->next=head;
+    head=temp;
+}
+void reverselist()
+{
+    Node* prev= NULL;
+    Node* curr=head;
+    Node* next =NULL;
+
+    while(curr!=NULL)
+    {
+        next = curr->next;
+        curr->next = prev;
+        prev=curr;
+        curr=next;
+    }
+    head=prev;
+}
+
+
+int main()
+
+{
+    insert_head(7);
+    insert_head(5);
+    insert_head(3);
+    insert_head(9);
+    insert_head(8);
+    insert_head(1);
+    display();
+    cout<<endl;
+    reverselist();
+    display();
+}
+
