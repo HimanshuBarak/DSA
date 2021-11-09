@@ -1,0 +1,36 @@
+int intersectPoint(Node* head1, Node* head2)
+{
+    // Your Code Here
+    int n1=0,n2=0,k=0;
+    Node* t1=head1;
+    Node* t2=head2;
+    Node* lg=NULL;
+    Node* sm=NULL;
+    int count=0;
+    //finding out which is the larger linked list 
+    while(t1!=NULL ){
+        t1=t1->next; n1++;
+    }
+    while(t2!=NULL ){
+        t2=t2->next; n2++;
+    }
+    if(n1>n2){
+        lg=head1;
+        sm=head2;
+    }
+    else{
+        lg=head2;
+        sm=head1;
+    }
+    k=abs(n1-n2);
+    //travesing the larger lsit by k to make both the list as equal length
+    while(k--){
+        lg=lg->next;
+    }
+    while(lg!=sm)
+    {
+        lg=lg->next;
+        sm=sm->next;
+    }
+         return lg->data;
+}
