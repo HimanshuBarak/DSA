@@ -1,0 +1,25 @@
+void splitList(Node *head, Node **head1_ref, Node **head2_ref)
+{
+    // your code goes here
+   
+    Node* fast =head;
+    Node* slow= head;
+    *head1_ref=head;
+   
+    while(fast->next!=head && fast->next->next!=head)
+    {
+        slow=slow->next;
+        fast=fast->next->next;
+       
+    }
+    //slow becomes the splitting point
+    *head2_ref=slow->next;
+     slow->next=head;  //making it the first splited linked list
+    slow=*head2_ref;
+    while(slow->next!=head)
+    {
+        slow=slow->next;
+        
+    }
+    slow->next=*head2_ref;  //pointing it to the second head
+}
