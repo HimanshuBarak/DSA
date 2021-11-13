@@ -1,58 +1,64 @@
-// Online C++ compiler to run C++ program online
-#include <iostream>
+//
+// Created by himan on 11/12/2021.
+//
+
 #include<bits/stdc++.h>
 
 using namespace std;
+//finding the position of the first element in the range low to high
+int partiton(int a[],int low,int high) {
 
-//this function is responsible for finding the position of a given element
-int partition(int arr[],int low,int high)
-{
-    int pivot =arr[low];
-    int i=low;
-    int j=high;
+    int pivot = a[low];
+    int i = low +1;
+    int j = high;
+    while(true) {
 
-    while(true)
-    {  //find a element that is greater than pivot
-        while(i<=j && arr[i]<=pivot)
-        {
+        while (a[i] <= pivot && i <= j)
             i++;
-        }
-        //find a element that is lesser than pivot
-        while(j>=i && arr[j]>=pivot)
-        {
+        while (a[j] >= pivot &&j>=i)
             j--;
-        }
-        if(j<i)
+        if (j < i)
             break;
-        else{
-            //swap the elements in the opposite sides
-            swap(arr[i],arr[j]);
-        }
+        else
+        swap(a[i], a[j]);
     }
-   //shift the pivot element to its sorted position in the array
-    swap(arr[low],arr[j]);
+
+        swap(a[low], a[j]);
     return j;
-
-
 }
 
-void QuickSort(int arr[],int low,int high){
-    int j;
-    if(low<high){
-        j=partition(arr,low,high);
-        QuickSort(arr,low,j-1);
-        QuickSort(arr,j+1,high);
+void QuickSort(int a[],int low,int high)
+{
+    //sorting the pivot element
+
+    if(low<high){ //stopping condition of recusrive function
+        int j= partiton(a,low,high);
+        QuickSort(a,low,j-1);
+        QuickSort(a,j+1,high);
     }
+    //apply it on the left half
+
+
+
 }
-int main() {
-    // Write C++ code here
-    cout<<"Hello world!";
-    int arr[] = {50,70,60,90,40,80,10,20,30};
+//Algorithm
+// For every element we find its correct position(the position that the element is going to take inthe sorted array)
+// the selected element whose position we find is called pivot
+// for pivot = first element, for an already sorted array time will be o(n)^2
+// average and best case will  nlogn reason
+
+int main(){
+
+    int a[] = {50,7,60,90,430,80,10,20,30};
     int n=9;
-    QuickSort(arr,0,8);
+    QuickSort(a,0,8);
     for(int i=0;i<n;i++)
     {
-        cout<<arr[i]<<" ";
+        cout<<a[i]<<" ";
     }
     return 0;
+
+    return 0;
 }
+
+
