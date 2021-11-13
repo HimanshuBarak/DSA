@@ -1,0 +1,148 @@
+// { Driver Code Starts
+#include <iostream>
+#include <cstdio>
+using namespace std;
+ 
+/* a node of the singly linked list */
+struct node
+{
+    int data;
+    struct node *next;
+    
+    node(int x){
+        data = x;
+        next = NULL;
+    }
+};
+
+/* A utility function to insert a node at the beginning of linked list */
+void push(struct node** head_ref, int new_data)
+{
+    /* allocate node */
+    struct node* new_node = new node(new_data);
+ 
+    /* link the old list off the new node */
+    new_node->next = (*head_ref);
+ 
+    /* move the head to point to the new node */
+    (*head_ref)    = new_node;
+}
+ 
+/* A utility function to print linked list */
+void printList(struct node *node)
+{
+    while (node != NULL)
+    {
+        printf("%d ", node->data);
+        node = node->next;
+    }
+    printf("\n");
+}
+void quickSort(struct node **headRef);
+int main()
+{
+	int t,n,x;
+	cin>>t;
+	while(t--){
+		
+        
+        cin>>n;n=n-1;
+		cin>>x;
+        node *temp,*head = new node(x);
+        temp=head;
+        while(n--)
+        {
+			cin>>x;
+          temp->next=new node(x);
+          temp=temp->next;
+			}
+    
+    quickSort(&head);
+ 
+    printList(head);
+ while(head!= NULL){
+     temp=head;
+     head=head->next;
+     free(temp);
+     
+ }
+	}
+    return 0;
+}// } Driver Code Ends
+
+
+ 
+/* a node of the singly linked list 
+struct node
+{
+    int data;
+    struct node *next;
+    
+    node(int x){
+        data = x;
+        next = NULL;
+    }
+}; */
+
+/*
+
+ Here we use two pointers both traversing in the forward direction one only increments when 
+ the elements less than pivot is encountered and swaps the element and in the end pivot 
+ gets swapped with this second pointer
+
+
+
+*/
+
+node* Partition(struct node* head, struct node* tail)
+{  
+    //Remember here both the pointers traverse in the same direction
+    node* pivot = head;
+    node* curr =head->next;
+    node* prev = head;
+    
+    
+    while(curr!=tail->next)
+    {
+        if(curr->data < pivot->data)
+        {
+            swap(prev->next->data,curr->data);
+            prev=prev->next;
+        }
+        
+        curr=curr->next;
+    }
+    
+    swap(prev->data,pivot->data);
+    
+     return prev; 
+    
+}
+
+void QuickSort(struct node* head,struct node* tail)
+{   
+    if(head == tail || tail == NULL || head == NULL )
+       return;
+    
+      node* j = Partition(head,tail);
+      //sort to the left of pivot
+      QuickSort(head,j);
+      //sorts to the right of pivot
+      QuickSort(j->next,tail);
+    
+}
+
+//you have to complete this function
+void quickSort(struct node **headRef) {
+     node* temp= *headRef;
+    
+     //finding the last element  
+     
+     while(temp->next!=NULL)
+     {
+         temp=temp->next;
+         
+     }
+     QuickSort(*headRef,temp);
+    
+}
