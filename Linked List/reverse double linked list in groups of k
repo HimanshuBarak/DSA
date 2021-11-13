@@ -1,0 +1,30 @@
+Node* reverse_k(Node* head,int k,Node* previous)
+{
+    if(head==NULL)
+        return head;
+    int i=0;
+    //reversing the k-large group
+    Node* curr =head;
+    Node* temp=NULL;
+    Node* last=NULL;
+    while(i<k && curr!=NULL)
+    {  last=curr;
+        cout<<curr->data<<"||";
+        temp=curr->next;
+        curr->next=curr->prev;
+        curr->prev=temp;
+        curr=temp;
+        i++;
+
+    }
+
+     head->next= reverse_k(temp,k,head); //use the same function to sort out the rest of the node starting from the next node
+     head=last;//as the group is reversed we change the head
+     last->prev=previous; //this is the new head we are pointing it to the node before this
+     return head;
+}
+
+
+////Inital Function call
+
+reverse_k(head,3,NULL);
