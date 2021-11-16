@@ -1,0 +1,29 @@
+
+
+///////////////////////// Solution ////////////////////////////////////////
+
+
+long long  multiplyTwoLists (Node* l1, Node* l2)
+{
+    //reversing the lists
+     
+      long   v1=0,v2=0,prd=1,mod=1000000007;
+      int i=0;
+      while(l1!=NULL)
+      {
+          v1 = (v1*10 + l1->data)%mod;
+          i++;
+          l1=l1->next;
+      }
+      i=0;
+      while(l2!=NULL){
+          v2 = (v2*10 + l2->data)%mod;
+          i++;
+          l2=l2->next;
+      }
+      
+      prd = (v1*v2)%mod;
+      
+      return prd;
+      
+}
