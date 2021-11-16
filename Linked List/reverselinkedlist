@@ -51,7 +51,7 @@ void insert_head(int val){
     temp->next=head;
     head=temp;
 }
-void reverselist()
+Node* reverselist(Node* head)
 {
     Node* prev= NULL;
     Node* curr=head;
@@ -65,6 +65,7 @@ void reverselist()
         curr=next;
     }
     head=prev;
+    return head;
 }
 
 
