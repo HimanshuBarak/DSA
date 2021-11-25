@@ -1,0 +1,22 @@
+Do you wanna be a software engineer :)
+
+
+class Solution {
+public:
+    TreeNode* invertTree(TreeNode* root) {
+        
+          if(root==NULL   )
+               return root;
+          
+        //swap
+         TreeNode* temp = root->right;
+          
+        root->right= root->left;
+        root->left= temp;
+        
+        invertTree(root->left);
+        invertTree(root->right);
+        
+        return root;
+    }
+};
