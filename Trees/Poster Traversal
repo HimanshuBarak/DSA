@@ -29,4 +29,36 @@ postorder ==>   left--right--root
     
     //////////////////////////////////// Iterative Approach ////////////////////////////////////
     
-    
+     vector<int> postorderTraversal(TreeNode* root) {
+         
+        vector<int> res;
+         if(root==NULL)
+            return res;
+        
+          stack<TreeNode* > s;
+        TreeNode* curr = root;
+        TreeNode* pre = NULL;
+        while(curr!=NULL || !s.empty())
+        {
+            while(curr!=NULL)
+            {
+                s.push(curr);
+                
+                curr=curr->left;
+               
+            }
+            
+            curr = s.top();
+            
+            if(curr->right==NULL || curr->right==pre){
+                res.push_back(curr->val);
+                s.pop();
+                pre=curr;
+                curr=NULL;                    //isse we are not modyfying the actual tree , ik right why not it should be modified
+            }
+            else
+                curr=curr->right;
+        }
+       
+        return res;
+    }
