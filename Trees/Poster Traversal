@@ -62,3 +62,43 @@ postorder ==>   left--right--root
        
         return res;
     }
+
+
+/////////////////////////////// 2 STACK APPROACH ////////////////////////////////////////////////////////////////////////////
+
+class Solution {
+public:
+    
+    vector<int> postorderTraversal(TreeNode* root) {
+         
+        vector<int> res;
+         if(root==NULL)
+            return res;
+        
+          stack<TreeNode* > s;
+        TreeNode* curr = root;
+         stack<TreeNode*> path;
+         s.push(curr);
+        while(!s.empty())
+        {
+            curr = s.top();
+            
+            if(!path.empty() && path.top()==curr)
+            {
+                res.push_back(curr->val);
+                s.pop();
+                path.pop();
+            }
+            else{
+                path.push(curr);
+                
+                if(curr->right)
+                   s.push(curr->right); 
+                 if(curr->left)
+                   s.push(curr->left); 
+            }
+        }
+       
+        return res;
+    }
+};
