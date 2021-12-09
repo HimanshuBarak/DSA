@@ -1,0 +1,31 @@
+class Solution
+{   
+    int temp=1;
+    public:
+    
+    int helper(Node* root)
+    {
+        if(!root)
+         return 0;
+         
+        int l = helper(root->left);
+        int r = helper(root->right);
+        
+         int sum=l+r;
+         if(root->left==NULL && root->right==NULL)
+           sum=0;
+         else if(root->data!=sum)
+          temp=0;
+          
+         
+        return root->data+sum; 
+    }
+    bool isSumTree(Node* root)
+    {
+         // Your code here
+         if(root==NULL)
+         return 1;
+         helper(root);
+         return temp;
+    }
+};
