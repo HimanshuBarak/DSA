@@ -38,7 +38,41 @@ You don't need to read inputs or print anything. Complete the function maxMeetin
   <h2> Solution </h2>
   
   ``` c++ 
-You don't need to read inputs or print anything. Complete the function maxMeetings() that takes two arrays start[] and end[] along with their size N as input parameters and returns the maximum number of meetings that can be held in the meeting room.
+class Solution
+{
+    public:
+    
+   static  bool comp(const pair<int,int> &a,const pair<int,int> &b){
+        return a.second <b.second;
+    }
+    //Function to find the maximum number of meetings that can
+    //be performed in a meeting room.
+    int maxMeetings(int start[], int end[], int n)
+    {
+        // Your code here
+        
+        vector<pair<int,int>> v;
+        
+        for(int i=0;i<n;i++){
+            v.push_back(make_pair(start[i],end[i]));
+        }
+        
+        sort(v.begin(),v.end(),comp);
+         pair<int,int> prev;
+        prev =v[0];
+        int count=1;
+        for(int i=1;i<n;i++)
+        {
+            if(v[i].first >prev.second)
+            {
+                count++;
+                prev =v[i];
+            }
+        }
+        
+        return count;
+    }
+};
 
   ```
 </div>
