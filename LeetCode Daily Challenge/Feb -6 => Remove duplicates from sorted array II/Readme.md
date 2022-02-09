@@ -42,26 +42,26 @@ It does not matter what you leave beyond the returned k (hence they are undersco
   ``` c++ 
 class Solution {
 public:
-    int findPairs(vector<int>& nums, int k) {
-        
-        unordered_map<int, int> map;
-        for(auto num:nums)
-            map[num]++;
-        
-        int res = 0;
-        if (k > 0) {
-            for(auto a:map)
-                if (map.find(a.first+k) != map.end()) 
-                    res++;
+    int removeDuplicates(vector<int>& a) {
+        int k=1, c=1,j=1;
+        int prev = a[0];
+        for(int i=1;i<a.size();i++)
+        {
+            if(prev==a[i] &&c>=2)
+            {
+               prev =a[i];
+                continue;
+            }else if(prev!=a[i])
+                c=0;
+            k++;
+            prev=a[i];
+            swap(a[i],a[j++]);
+            c++;
+            cout<<c<<" ";
+            
         }
         
-        else {
-            for(auto a:map)
-                if (a.second > 1)
-                    res++;
-        }
-        
-        return res;
+        return k;
     }
 };
   ```
