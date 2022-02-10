@@ -33,11 +33,11 @@ Return the letter that was added to t.
 1 <= s.length, p.length <= 3 * 104
 
   <h2> Algorithm </h2>
- ```
+ <pre>
   1. Find the sum of all characters in S
   2. Subtract the sum of all characters from t
   3. The leftover is your answer
-  ```
+  </pre>
   <h2> Solution </h2>
   
   ``` c++ 
