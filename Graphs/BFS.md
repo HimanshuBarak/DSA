@@ -1,0 +1,34 @@
+
+
+<h1> Breadth First Search Traversal of a Graph </h1>
+
+
+
+``` c++
+ vector<int> bfsOfGraph(int V, vector<int> adj[]) {
+        //to store the visted vertex so that they aren't visited again
+         vector<bool> vis(V,false);
+         
+         vector<int> res;
+         queue<int> q;     
+         q.push(0);
+           
+         while(!q.empty()){
+               
+               int v = q.front(); 
+               q.pop();
+               res.push_back(v);
+               
+               for(auto x:adj[v])
+               {
+                   if(!vis[x])
+                   {
+                       vis[x]=true;
+                       q.push(x);
+                   }
+               }
+           }    
+          return res;
+    }
+
+```
