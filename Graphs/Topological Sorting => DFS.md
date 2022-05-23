@@ -1,11 +1,13 @@
 <h2> Given a Directed Acyclic Graph (DAG) with V vertices and E edges, Find any Topological Sorting of that Graph.</h2>
 
 <h3> Algorithm </h3>
-```
+<pre>
 1. Just do simple dfs and store it in stack ,its basically reverse of a dfs which can be accomplished using a stack
 
-```
+</pre>
 
+
+<h3> Code </h3>
 ``` c++
 class Solution
 {
