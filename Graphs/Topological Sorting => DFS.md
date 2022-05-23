@@ -8,7 +8,9 @@
 
 
 <h3> Code </h3>
-``` c++
+
+```c++
+
 class Solution
 {
 	public:
