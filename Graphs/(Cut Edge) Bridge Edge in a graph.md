@@ -41,7 +41,8 @@ Given a Graph of V vertices and E edges and another edge(c - d), the task is to 
   </pre>
   <h2> Solution </h2>
   
-  ``class Solution
+  ``` c++
+	class Solution
 {
 	public:
 	
@@ -83,7 +84,7 @@ Given a Graph of V vertices and E edges and another edge(c - d), the task is to 
         return dfs(adj,vis,low,-1,tin,c,c,d,1);
         
     }
-};` c++ 
+};
 
   ```
 </div>
