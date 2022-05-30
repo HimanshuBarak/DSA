@@ -30,7 +30,7 @@
 
   <h2> Algorithm </h2>
  <pre>
-  
+  Do simple dfs and check if any vertex is being revisited also (exclude the parent when traversing the neighbours ) 
   </pre>
   <h2> Solution </h2>
   
