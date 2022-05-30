@@ -32,8 +32,9 @@
 
   <h2> Algorithm </h2>
  <pre>
-   Here check for each vertex 
-   the vertext visited in each vertex
+   Here we maintain two arrays one is the visited array and one is dfs_vis [].
+   The second array stores whether the vertex is visited in the current iteration of the dfs 
+   Thus if dfs_vis[v] is already 1 and it is again visited than we can say that there is a cycle present
   </pre>
   <h2> Solution </h2>
   
