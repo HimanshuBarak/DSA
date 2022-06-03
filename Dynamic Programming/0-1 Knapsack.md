@@ -71,5 +71,37 @@ weight[] = {4,5,6}
             return dp[w][n-1]=knapSack(w,wt,val,n-1);
     }
 };
+  
+  
+  //TOP DOWN APPROACH
+  class Solution
+{   
+     
+    public:
+    //recursive function be like 
+    
+    int knapSack(int w, int wt[], int val[], int n) 
+    { 
+        int dp[1000][1000];
+        memset(dp,-1,sizeof(dp));  
+        
+        for(int i=0;i<=n;i++)
+        {
+            for(int j=0;j<=w;j++)
+            {
+                if(i==0 ||j==0)
+                 {
+                     dp[i][j]=0; continue;
+                 }
+                 if(wt[i-1]<=j) 
+                  dp[i][j] = max((val[i-1]+dp[i-1][j-wt[i-1]]),dp[i-1][j]);
+                 else 
+                  dp[i][j]=dp[i-1][j];
+            }
+        }
+          
+        return dp[n][w]; 
+    }
+};
   ```
 </div>
