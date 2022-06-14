@@ -13,7 +13,7 @@ A common subsequence of two strings is a subsequence that is common to both stri
 </p>
 
 
-[Problem Link](https://leetcode.com/problems/partition-equal-subset-sum/)
+[Problem Link](https://practice.geeksforgeeks.org/problems/longest-common-subsequence-1587115620/0/?category[]=Dynamic%20Programming&page=1&query=category[]Dynamic%20Programmingpage1)
 
 <p>&nbsp;</p>
 <p><strong>Example 1:</strong></p>
@@ -63,7 +63,7 @@ public:
        
         if(s1[n-1]==s2[m-1]) //as both are same add to the subsequence size by +1
             return dp[n][m] = 1+ helper(s1,s2,n-1,m-1);
-        else  //checks which returns max by removing a letter fro mboth one by one  
+        else  //checks which returns max by first not considering the current letter of s1 and than of s2 whichever way  gives max value is chosen
             return dp[n][m] = max(helper(s1,s2,n,m-1),helper(s1,s2,n-1,m));
     }
     
@@ -71,6 +71,39 @@ public:
             
         memset(dp,-1,sizeof(dp));
         return helper(s1,s2,s1.length(),s2.length());
+    }
+};
+
+//Bottom Up Approach
+class Solution
+{
+    public:
+    //Function to find the length of longest common subsequence in two strings.
+    int lcs(int x, int y, string s1, string s2)
+    {
+        int n=x ,m=y;
+        int dp[n+1][m+1];
+        memset(dp,-1,sizeof(dp));
+        
+        //intialization of the base condition
+        for(int i=0;i<n+1;i++)
+            dp[i][0]=0;
+        for(int i=0;i<m+1;i++)
+            dp[0][i]=0;
+        
+        for(int i=1;i<=n;i++)
+        {
+            for(int j=1;j<=m;j++)
+            {
+//add 1 to the result of the result with size of both string reduced by this letter        
+                if(s1[i-1]==s2[j-1])
+                    dp[i][j] = 1+ dp[i-1][j-1]; 
+                else
+                dp[i][j] = max(dp[i-1][j],dp[i][j-1]);
+                
+            }
+        }
+        return dp[n][m];
     }
 };
   ```
