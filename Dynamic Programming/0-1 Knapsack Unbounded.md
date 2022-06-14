@@ -42,8 +42,8 @@ wt[] = {2, 1}
  <pre>
   1. This is quite similar to  0/1 kanpsack
   2. the difference being here once you select on element you again try if the element can be selected
-  3. 
-  4. 
+  3. For bottom up we take i instead of i-1 coz we want to access the sum of current term(iske upr current vali ko dubara add krna ,instead of doing
+  4. i-1 and addign onto the sum of previous terms
   </pre>
   <h2> Solution </h2>
   
@@ -68,5 +68,29 @@ public:
           return dp[n][w] =knapSack(n-1,w,val,wt);
     }
 };
+
+//Bottom UP Approach
+ int knapSack(int n, int w, int val[], int wt[])
+    {
+        int dp[1001][1001];
+        memset(dp,-1,sizeof(dp)); 
+        
+        for(int i=0;i<=n;i++)
+        {
+            for(int j=0;j<=w;j++){
+               
+                if(i==0 || j==0){
+                   dp[i][j]=0; continue;  
+                }
+               else if(wt[i-1]<=j)
+                {
+                  dp[i][j]= max(val[i-1]+dp[i][j-wt[i-1]],dp[i-1][j]);//same row m chayie iss term ka
+                }else
+                   dp[i][j] = dp[i-1][j];
+                }
+        }
+        
+       
+    }
   ```
 </div>
