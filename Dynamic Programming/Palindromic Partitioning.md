@@ -98,5 +98,56 @@ public:
         return solve(s,0,s.size()-1);
     }
 };
+                               // optimized approach "try running it for input "abcd" and you will see what I mean
+          class Solution {
+public:
+    int dp[2000+1][2000+1];
+    int pal[2000+1][2000+1];
+    int  isPalindrome(string &s,int i,int j)
+    {   
+        if (i >= j) return true;
+        if(pal[i][j]!=-1)
+            return pal[i][j];
+        while(i<j)
+        {
+            if(s[i]!=s[j])
+                return pal[i][j]=0; 
+            i++;j--;
+        }
+        return pal[i][j]=1;
+    }
+    
+    int solve(string &s, int i, int j)
+    {
+        if(i>=j)
+            return 0;
+        
+        if(dp[i][j]!=-1)
+            return dp[i][j];
+        int ans =INT_MAX;
+        //check if the string is palindrome no partition required
+        if(isPalindrome(s,i,j))
+            return 0;
+        for(int k=i;k<=j-1;k++)
+        { 
+           /* 
+            If loop is entered its not palindrome hence we add 1 + partiiton on lgeft + right like below
+            int temp = 1+ solve(s,i,k)+solve(s,k+1,j);
+            
+            */
+            //further optimizing the above code
+           if(isPalindrome(s,i,k))
+           ans=min(solve(s,k+1,j)+1,ans);
+        }
+        //max cuts can be n-1 the first iteration actually takes care of that
+        //thus after that we only consider strings that are palindrome 
+        return dp[i][j] =ans;
+    }
+    int minCut(string s) { 
+        memset(dp,-1,sizeof(dp));
+        memset(pal,-1,sizeof(pal));
+        return solve(s,0,s.size()-1);
+    }
+};
   ```
 </div>
