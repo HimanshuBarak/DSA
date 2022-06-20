@@ -1,91 +1,64 @@
-Given an array Arr that contains N integers (may be positive, negative or zero). Find the product of the maximum product subarray.
-
-Example 1:
-
-Input:
-N = 5
-Arr[] = {6, -3, -10, 0, 2}
-Output: 180
-Explanation: Subarray with maximum product
-is 6, -3, -10 which gives product as 180.
-Example 2:
-
-Input:
-N = 6
-Arr[] = {2, 3, 4, 5, -1, 0}
-Output: 120
-Explanation: Subarray with maximum product
-is 2, 3, 4, 5 which gives product as 120.
-Your Task:
-You don't need to read input or print anything. Your task is to complete the function maxProduct() which takes the array of integers arr and n as parameters and returns an integer denoting the answer.
-Note: Use 64-bit integer data type to avoid overflow.
-
-Expected Time Complexity: O(N)
-Expected Auxiliary Space: O(1)
-
-Constraints:
-1 ≤ N ≤ 500
--102 ≤ Arri ≤ 102
+<h2>Longest Consecutive Subsequence</h2>
+<h3>Medium</h3><hr>
+<div><p>
+  
+Given an unsorted array of integers nums, return the length of the longest consecutive elements sequence.
+You must write an algorithm that runs in O(n) time.
+ 
+</p>
 
 
-//////////////////////////////////////////////////////  Code ///////////////////////////////////////////////////////////////
+[Problem Link](https://leetcode.com/problems/longest-consecutive-sequence/)
 
+<p>&nbsp;</p>
+<p><strong>Example 1:</strong></p>
 
- int findLongestConseqSubseq(int a[], int n)
-    {
-      unordered_map<int ,int> umap;
-      int count,temp=0;
-      for(int i=0;i<n;i++)
-      {
-          umap[a[i]]++;
-      }
       
-      for(int i=0;i<n;i++)
-       {   
-           //check if its the first element or not
-           if(umap.find(a[i]-1)==umap.end())
-           {
-               temp=1;
-               int j=a[i]+1;
-               while(umap.find(a[i]+temp)!=umap.end())
-                 temp++;
-           }
-           count =max(temp,count);
-       }
-       
-       return count;
+ 
+<pre><strong>Input:</strong> nums = [100,4,200,1,3,2]
+<strong>Output:</strong> 4
+<strong>Explanation:</strong> The longest consecutive elements sequence is [1, 2, 3, 4]. Therefore its length is 4.
+</pre>
+
+<p><strong>Example 2:</strong></p>
+
+<pre><strong>Input:</strong> 
+     
+<strong>Output:</strong> 
+<strong>Explanation:</strong> 
+</pre>
+
+<p>&nbsp;</p>
+<p><strong>Complexities:</strong></p>
+<strong>Time:</strong> 
+  
+<strong>Space:</strong> 
+ 
+  <h2> Solution </h2>
+  
+  ``` c++ 
+    class Solution {
+public:
+    
+    // O(N) time and O(N) space
+    int longestConsecutive(vector<int>& nums) {  
+        unordered_set<int> s(nums.begin(),nums.end());
+        int ans=0,cnt=0;
+        for(auto x:s)
+        {   
+    //incase the previous digit is present end loop (avoids repeatition)
+            if(s.find(x-1)!=s.end())
+                continue;
+            int y=x+1;cnt=1;
+            while(s.find(y)!=s.end())
+            {
+                y++,cnt++;   
+            }
+           ans=max(ans,cnt);
+        }
+        
+        return ans;
     }
-    
-    
-    
-    /////////////////////////////////////Code//////////////////////////////////////////
-    
-     int findLongestConseqSubseq(int a[], int n)
-    {
-      int hash[100000];
-       int count=0,temp=0;
-      for(int i=0;i<=100000;i++)
-       hash[i]=0;
-       
-      for(int i=0;i<n;i++)
-      {  
-         
-          hash[a[i]]=a[i];
-      }
-      
-      for(int i=0;i<=100000;i++)
-      {
-          if(hash[i]==0)
-          {
-              temp=0;
-          }
-          else
-           {
-               temp++;
-              
-           }
-           count =max(count,temp);
-      }
-       
-       return count;
-    }
+};
+  ```
+</div>
