@@ -1,3 +1,4 @@
+``` c++
 // { Driver Code Starts
 #include <iostream>
 #include <stdio.h>
@@ -136,3 +137,4 @@ int main() {
     }
     return 0;
 }  // } Driver Code Ends
+```
