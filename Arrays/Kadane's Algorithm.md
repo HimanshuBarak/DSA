@@ -1,5 +1,5 @@
 
-
+```c++
 Kadane 's  Algorithm
 
     int maxSubarraySum(int arr[], int n){
@@ -20,3 +20,4 @@ Kadane 's  Algorithm
         
        return sum;
     }
+```
