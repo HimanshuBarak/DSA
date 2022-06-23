@@ -1,6 +1,8 @@
- bool detectLoop(Node* head)
+``` c++
+bool detectLoop(Node* head)
     {
         //floyd moore algorithm
+        //you can also rename them as fast and slow  pointer
         Node* tortoise=head;
         Node* hare = head;
          //we have to ensure that NULL->next should never happen ,hence hare->next is used
@@ -16,3 +18,4 @@
         
         return 0;
     }
+```
