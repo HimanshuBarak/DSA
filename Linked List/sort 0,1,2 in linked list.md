@@ -5,17 +5,21 @@ Example 1:
 Input:
 N = 8
 value[] = {1,2,2,1,2,0,2,2}
+
 Output: 0 1 1 2 2 2 2 2
-Explanation: All the 0s are segregated
-to the left end of the linked list,
-2s to the right end of the list, and
-1s in between.
+
+Explanation: All the 0s are segregated to the left end of the linked list, 2s to the right end of the list, and1s in between.
+
 Example 2:
 
 Input:
+
 N = 4
+
 value[] = {2,2,0,1}
+
 Output: 0 1 2 2
+
 Explanation: After arranging all the
 0s,1s and 2s in the given format,
 the output will be 0 1 2 2.
@@ -29,8 +33,9 @@ Constraints:
 1 <= N <= 103
 
 /////////////////////////// Solution /////////////////////////
-/* Another approach can be to count number of 0s,1s,2s, and than format the list accordingly
 
+```c++
+// Another approach can be to count number of 0s,1s,2s, and than format the list accordingly
 class Solution
 {
     public:
@@ -75,3 +80,4 @@ class Solution
         
     }
 };
+```
