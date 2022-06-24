@@ -58,49 +58,43 @@ Constraints:
 1 <= Mi <= 20
 1 <= Element of linked list <= 103
 
-
-///////////////////////////// Solution ////////////////////////////////////////////////////////////////////
-
 /*  Algorithm
   
 imagine all the values of the linked list as separate sorted linked list ,just merge these sorted lists and you done
 . */
-Node* mergelists(Node *l1,Node* l2)
-{
-    if(l2==NULL)
-      return l1;
-    if(l1==NULL)
-      return l2; 
-      
-    if(l1->data<l2->data)
-    {
-        l1->bottom=mergelists(l1->bottom,l2);
-        return l1;
-    }
-    else{
-        l2->bottom=mergelists(l1,l2->bottom);
-        return l2;
-    }
+///////////////////////////// Solution ////////////////////////////////////////////////////////////////////
+``` c++
+Node* merge(Node* l1, Node* l2){
+         if(!l2)
+             return l1;
+          if(!l1)
+             return l2;         
+        
+        //now for the sweet part 
+         if(l1->data < l2->data)
+         {  
+             l1->bottom = merge(l1->bottom,l2); //this node is selected the next node will be whichever is smaller l1->next or l2 and so on
+             return l1;
+         }
+         else
+         {   
+             l2->bottom = merge(l1,l2->bottom);
+             return l2;
+         }
 }
-    
-Node *flatten(Node *head)
+Node *flatten(Node *root)
 {
-   // Your code here
-    if(head->next==NULL)
-      return head;
-    Node* curr = head;
-    Node* second = head->next;
-    Node* prev=mergelists(curr,second);
-    if(second->next==NULL)
-      return prev;
-    else{
-         curr=second->next;
-         while(curr!=NULL){
-            prev=mergelists(prev,curr);
-            curr=curr->next;
-       }
-       
-       return prev;
-    }  
+   if(!root || !root->next)
+     return root;
+   Node* l1 =root;
+   Node* l2 = root->next;
    
+   while(l2)
+   {
+       l1 = merge(l1,l2);
+       l2 = l2->next;
+   }
+   return l1;
 }
+```
+
