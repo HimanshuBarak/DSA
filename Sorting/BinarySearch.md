@@ -1,4 +1,5 @@
- int search(vector<int>& nums, int t) {
+``` c++
+int search(vector<int>& nums, int t) {
 
         int res=-1,mid=-1;
 
@@ -33,3 +34,4 @@
         }
         return res;
     }
+```
