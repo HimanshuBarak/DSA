@@ -2,6 +2,7 @@
 // Created by himan on 11/12/2021.
 //
 
+``` c++
 #include<bits/stdc++.h>
 
 using namespace std;
@@ -60,5 +61,7 @@ int main(){
 
     return 0;
 }
+
+```
 
 
