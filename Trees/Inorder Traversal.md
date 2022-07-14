@@ -4,7 +4,7 @@ Inorder Traversal =>  left - root - right
 
 
 Recursive approach ----------------------------------------------------
-
+```c++
 class Solution {
 public:
     void inorder(TreeNode* root ,vector<int> &res)
@@ -29,9 +29,9 @@ public:
     }
 };
 
-
+```
 /////////////////////////////////////////////// Iterative Approach ///////////////////////////////////////////////
-
+``` c++
 class Solution {
 public:
    
@@ -57,3 +57,4 @@ public:
          return res;
     }
 };
+```
