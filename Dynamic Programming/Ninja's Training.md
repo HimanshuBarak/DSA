@@ -98,5 +98,29 @@
 }    
 
 Space optimised kal krenge
+                                 
+ int ninjaTraining(int n, vector<vector<int>> &pt){
+  //think in reverse 
+    vector<int> temp(4,-1);
+    temp[0] = max(pt[0][1],pt[0][2]);
+    temp[1] = max(pt[0][0],pt[0][2]);
+    temp[2] = max(pt[0][0],pt[0][1]);
+    temp[3] = max(pt[0][0],max(pt[0][1],pt[0][2]));
+    
+    for(int i=1;i<n;i++)
+    {  
+      vector<int> curr(4,-1);
+     for(int next=0;next<4;next++)
+      {  
+        for(int k=0;k<3;k++)
+        {
+          if(k!=next)
+             curr[next] = max(curr[next],pt[i][k]+temp[k]);     
+        }  
+      } 
+        temp=curr;
+    }
+    return  temp[3];
+}                                
   ```
 </div>
