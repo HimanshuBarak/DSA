@@ -1,4 +1,6 @@
 ``` c++
+
+// this is not binary seach simple version it is some sort of binary search related question's answer
 int search(vector<int>& nums, int t) {
 
         int res=-1,mid=-1;
