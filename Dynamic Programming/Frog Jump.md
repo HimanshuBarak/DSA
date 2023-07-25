@@ -34,8 +34,7 @@
 <strong>Space:</strong> 
   <h2> Algorithm </h2>
  <pre>
-  1. 
-  2.
+   At each step the forh has two choices to jump to i+1 stair or i+2 stair . we should always chose the stair which takes the least amount of energy
   </pre>
   <h2> Solution </h2>
   
