@@ -4,7 +4,9 @@
 
 <p><strong>Complexities:</strong></p>
 <strong>Time:</strong>  O(V+ E) => each vertex gets visited once and in total 2E neigbors are traversed
+
 <strong>Space:</strong>  O(V)
+
 ``` c++
  vector<int> bfsOfGraph(int V, vector<int> adj[]) {
         //to store the visted vertex so that they aren't visited again
