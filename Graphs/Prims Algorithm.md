@@ -24,46 +24,49 @@ class Solution
 	//Function to find sum of weights of edges of the Minimum Spanning Tree.
     int spanningTree(int V, vector<vector<int>> adj[])
     {
-        // code here
-        //min heap
-        priority_queue<pair<int,int> ,vector<pair<int,int>> ,greater<pair<int,int>>> pq;
-        int ans=0;
-        //dist matrix to store the distance 
+        // what we have done here is we started with any vertex and then for each vertex 
+        // and then for each connected vertex we select the edge with minimum cost using
+        // a min heap we keep doing this until we have connected all the vertex using n-1
+        // such edges
+        vector<int> vis(V,0);
+        priority_queue<pair<int,pair<int,int>>, vector<pair<int,pair<int,int>>> , greater<pair<int,pair<int,int>>>> pq;
+        
+        
+         //dist matrix to store the distance 
         vector<int> dist(V,INT_MAX);
-        dist[0]=0; //this will be our starting point
-        //for printing the minimum spanning tree
+         //now we try to find out the parent o
         vector<int> parent(V,-1);
-        //for marking the nodes contained in MST
-        vector<int> mst(V,0);
-        
-        pq.push({0,0}); //pushing the first entry in the queue
-        
+        pq.push({0,{0,-1}});
+        dist[0]=0;
+        int sum =0;
         while(!pq.empty())
         {
-            int v =pq.top().second;
+           pair<int,pair<int,int>> p = pq.top();
+           pq.pop();
+           int v = p.second.first;
+           int dis = p.first;
            
-            pq.pop();
-            
-            mst[v]=1;
-            
-            //adding the minimum edged neighbours
+           // vertex is alreday present and its associated min edges are already calculated 
+           if(vis[v])
+            continue;
+            parent[v] = p.second.second;
+            vis[v]=1;
+            sum+=dis;
+           
             for(auto x:adj[v])
             {
-                int wt = x[1];
-                int u =x[0];
-                
-                if(!mst[u] && wt<dist[u]) //if this edge is not in the mst and its weight is lesser
-                  {
-                      dist[u]=wt;
-                      parent[u]=v;
-                      pq.push({wt,u});
-                  }
+                if(!vis[x[0]])
+                {   
+                    pq.push({x[1],{x[0],v}});
+                }
             }
         }
-        //getting the final result
+        
+       
+        
         for(int i=0;i<V;i++)
-          ans+=dist[i];
-        return ans;
+        cout<<parent[i]<<"  ";
+        return sum;
     }
 };
 
