@@ -75,12 +75,12 @@ class DisjointSet{
         if(pU==pV)
          return; 
          // we attach smaller rank bith bigger to decrease the overall time in finding the parent
-        if(rank[pV]>rank[pU])
+        if(size[pV]>size[pU])
         {
             parent[pU]=pV;
             size[pV]+=size[pU];
         }
-        else if(rank[pU]==rank[pV])
+        else if(size[pU]==size[pV])
         {
             size[pU]+=size[pV];
             parent[pV]=pU;
