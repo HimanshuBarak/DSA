@@ -18,38 +18,28 @@ Return the minimum effort required to travel from the top-left cell to the botto
 
       
  
-<pre><strong>Input:</strong>
-<strong>Output:</strong> 
-<strong>Explanation:</strong> 
+<pre><strong>Input:</strong> heights = [[1,2,2],[3,8,2],[5,3,5]]
+<strong>Output:</strong> 2
+<strong>Explanation:</strong> The route of [1,3,5,3,5] has a maximum absolute difference of 2 in consecutive cells.
+This is better than the route of [1,2,2,2,5], where the maximum absolute difference is 3.
 </pre>
 
 <p><strong>Example 2:</strong></p>
 
-<pre><strong>Input:</strong> 
+<pre><strong>Input:</strong> heights = [[1,2,3],[3,8,4],[5,3,5]]
      
-<strong>Output:</strong> 
-<strong>Explanation:</strong> 
+<strong>Output:</strong> 1
+<strong>Explanation:</strong> The route of [1,2,3,4,5] has a maximum absolute difference of 1 in consecutive cells, which is better than route [1,3,5,3,5].
 </pre>
 
 <p>&nbsp;</p>
 <p><strong>Complexities:</strong></p>
-<strong>Time:</strong> 
+<strong>Time:</strong> ElogV
   
 <strong>Space:</strong> 
-  <h2> Algorithm </h2>
+  <h2> Intuition </h2>
  <pre>
-  1. 
-  2.
-  3. 
-  4. 
-  </pre>
-  <h2> Solution </h2>
-  
-  ``` c++ 
-  class Solution {
-public:
-    int minimumEffortPath(vector<vector<int>>& ht) {
-        /*
+     /*
         
         we will do dikstra 
         we will select the neighborinh node with the least common difference 
@@ -58,6 +48,14 @@ public:
         if we use prioirty queue with this it will be more efficient
         ElogV
         */
+  </pre>
+  <h2> Solution </h2>
+  
+  ``` c++ 
+  class Solution {
+public:
+    int minimumEffortPath(vector<vector<int>>& ht) {
+       
 
         int n =ht.size();
         int m =ht[0].size();
