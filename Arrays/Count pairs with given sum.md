@@ -19,13 +19,11 @@ and arr[1] + arr[3] = 5 + 1 = 6.
 Example 2:
 
 Input:
-
-N = 4, X = 2
-
+N = 4, K = 2
 arr[] = {1, 1, 1, 1}
 Output: 6
-
 Explanation: 
+Each 1 will produce sum 2 with any 1.
 
 Each 1 will produce sum 2 with any 1.
 
@@ -33,8 +31,8 @@ Your Task:
 You don't need to read input or print anything. Your task is to complete the function getPairsCount() which takes arr[], n and k as input parameters and returns the number of pairs that have sum K.
 
 
-Expected Time Complexity: O(N)
-Expected Auxiliary Space: O(N)
+Expected Time Complexity: O(N), where N is the number of elements in the array.
+Expected Auxiliary Space: O(N), due to the unordered_map that can potentially store N key-value pairs where each key is a distinct number from the array.
 
 Constraints:
 1 <= N <= 105
