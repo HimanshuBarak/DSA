@@ -31,9 +31,9 @@ You must solve the problem without modifying the array nums and uses only consta
 
 <p>&nbsp;</p>
 <p><strong>Complexities:</strong></p>
-<strong>Time:</strong> 
+<strong>Time:</strong> O(n), where n is the number of integers in the array. The slow pointer moves one step and the fast pointer moves two steps until they meet which takes O(n) time. 
   
-<strong>Space:</strong> 
+<strong>Space:</strong> O(1), as the algorithm only uses a constant amount of additional space for the slow and fast pointers.
   <h2> Algorithm </h2>
  <pre>
   1. That rabbit tortoise thing using fast and slow pointer (very similar to find cycle starting point in linked list)
