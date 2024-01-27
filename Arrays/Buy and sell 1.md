@@ -34,7 +34,7 @@ Note that buying on day 2 and selling on day 1 is not allowed because you must b
 
 <p>&nbsp;</p>
 <p><strong>Complexities:</strong></p>
-<strong>Time:</strong> 
+<strong>Time:</strong> O(n), where n is the number of days in the prices array.
   
 <strong>Space:</strong> 
   <h2> Algorithm </h2>
