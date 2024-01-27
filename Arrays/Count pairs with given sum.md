@@ -19,13 +19,11 @@ and arr[1] + arr[3] = 5 + 1 = 6.
 Example 2:
 
 Input:
-
-N = 4, X = 2
-
+N = 4, K = 2
 arr[] = {1, 1, 1, 1}
 Output: 6
-
 Explanation: 
+Each 1 will produce sum 2 with any 1.
 
 Each 1 will produce sum 2 with any 1.
 
