@@ -39,10 +39,13 @@ Note that buying on day 2 and selling on day 1 is not allowed because you must b
 <strong>Space:</strong> 
   <h2> Algorithm </h2>
  <pre>
-  1. This is simple we just need to find the difference between a value and a value preceding teh value
-  2. Thus we choose a min ,keep updating it
-  3. keep finding the ma profit 
-  4. Tadaaa Done
+  1. Initialize a variable to store the maximum profit (maxProfit) and set it to 0.
+  2. Initialize a variable to store the minimum price seen so far (minPrice) and set it to the first price in the array.
+  3. Iterate through the prices array starting from the second price.
+  4. For each price, update the minPrice if the current price is lower than the minPrice.
+  5. Calculate the profit if the current price is sold at minPrice, and update maxProfit if the calculated profit is greater than maxProfit.
+  6. Return the value of maxProfit as the maximum achievable profit.
+  </pre>
   </pre>
   <h2> Solution </h2>
   
