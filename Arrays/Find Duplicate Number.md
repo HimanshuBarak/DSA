@@ -37,9 +37,9 @@ You must solve the problem without modifying the array nums and uses only consta
   <h2> Algorithm </h2>
  <pre>
   1. That rabbit tortoise thing using fast and slow pointer (very similar to find cycle starting point in linked list)
-  2.
-  3. 
-  4. 
+  2. The pointers are moved until they first meet at some intersection point in the cycle.
+  3. Reset one of the pointers to the start of the array and move both pointers one step at a time.
+  4. The point at which they meet the second time is the duplicate number (start of the cycle). 
   </pre>
   <h2> Solution </h2>
   
