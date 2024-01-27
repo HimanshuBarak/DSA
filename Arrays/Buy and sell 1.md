@@ -25,9 +25,10 @@ Note that buying on day 2 and selling on day 1 is not allowed because you must b
 
 <p><strong>Example 2:</strong></p>
 
-<pre><strong>Input:</strong> 
-     
-<strong>Output:</strong> 
+<pre><strong>Input:</strong> prices = []
+<strong>Output:</strong> 0
+<strong>Explanation:</strong> In this case, since the prices are not provided, we cannot calculate the profit. Therefore, the output is 0 by default.
+</pre>
 <strong>Explanation:</strong> 
 </pre>
 
